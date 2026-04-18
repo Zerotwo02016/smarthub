@@ -37,7 +37,7 @@ Configured in `app.js`:
 
 ## Supabase Redirect URLs
 
-The homepage includes a Supabase redirect URL container for all auth routes:
+Auth redirect routes are available for Supabase settings:
 
 - `https://<YOUR_DOMAIN>/email-confirmation/`
 - `https://<YOUR_DOMAIN>/reset-password/`

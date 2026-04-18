@@ -8,6 +8,8 @@ This folder is a pure static website. No Laravel and no build step required.
 - `styles.css` (responsive UI styling)
 - `app.js` (download metrics + redirect logic)
 - `email-confirmation/index.html` (kept for auth redirect route)
+- `reset-password/index.html` (Supabase password reset route container)
+- `password-changed/index.html` (post-reset success route container)
 - `.nojekyll`
 
 ## Download Tracking + Redirect
@@ -33,12 +35,16 @@ Configured in `app.js`:
 - Build command: `exit 0`
 - Build output directory: `.`
 
-## Supabase Redirect URL
+## Supabase Redirect URLs
 
-Email confirmation is intentionally not shown on the homepage UI, but the route is available for auth redirects:
+The homepage includes a Supabase redirect URL container for all auth routes:
 
 - `https://<YOUR_DOMAIN>/email-confirmation/`
+- `https://<YOUR_DOMAIN>/reset-password/`
+- `https://<YOUR_DOMAIN>/password-changed/`
 
 Set the same URL in your SmartHub local config (`supabase.local.json`) for:
 
 - `SMARTHUB_SUPABASE_EMAIL_REDIRECT_URL`
+- `SMARTHUB_SUPABASE_PASSWORD_RESET_REDIRECT_URL`
+- `SMARTHUB_SUPABASE_PASSWORD_CHANGED_REDIRECT_URL`

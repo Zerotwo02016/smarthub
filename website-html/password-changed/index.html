@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Email Confirmation - SmartHub</title>
+  <title>Password Changed - SmartHub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -25,25 +25,25 @@
 
       <section class="hero-grid" style="grid-template-columns:1fr; margin-top: 16px;">
         <article class="hero-copy reveal-up delay-1">
-          <p class="status" style="margin-top:0;">Account flow completed</p>
+          <p class="status" style="margin-top:0;">Password update completed</p>
 
-          <h1>Account <span>Verified</span></h1>
-          <h2>your email was confirmed successfully</h2>
+          <h1>Password <span>Changed</span></h1>
+          <h2>your account password was updated successfully</h2>
 
           <p>
-            Return to the SmartHub Windows app and continue signing in using your account.
-            This route is kept for authentication redirects only.
+            Return to the SmartHub Windows app and sign in with your new password.
+            This route is used as the final redirect container after password reset.
           </p>
 
           <div class="cta-row">
             <a class="btn primary" href="../">Back to Website</a>
-            <a class="btn secondary" href="../reset-password/">Reset Password Route</a>
+            <a class="btn secondary" href="../reset-password/">Open Reset Password Route</a>
           </div>
         </article>
       </section>
 
       <footer class="foot">
-        <p>Email confirmation endpoint is active. Additional auth routes: /reset-password/ and /password-changed/.</p>
+        <p>Password changed endpoint is active and working.</p>
       </footer>
     </section>
   </main>

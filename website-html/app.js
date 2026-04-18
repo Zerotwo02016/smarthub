@@ -17,6 +17,9 @@ const els = {
   metricTrackedClicks: document.getElementById('metricTrackedClicks'),
   metricPublishedAt: document.getElementById('metricPublishedAt'),
   siteUrl: document.getElementById('siteUrl'),
+  supabaseEmailRedirectUrl: document.getElementById('supabaseEmailRedirectUrl'),
+  supabasePasswordResetUrl: document.getElementById('supabasePasswordResetUrl'),
+  supabasePasswordChangedUrl: document.getElementById('supabasePasswordChangedUrl'),
 };
 
 function setStatus(message) {
@@ -160,11 +163,38 @@ async function onDownloadClick() {
 
 function setSiteUrl() {
   if (!els.siteUrl) return;
-  els.siteUrl.textContent = `${window.location.origin}/`;
+  els.siteUrl.textContent = resolveWebsiteBaseUrl();
+}
+
+function resolveWebsiteBaseUrl() {
+  try {
+    return new URL('./', window.location.href).toString();
+  } catch {
+    return `${window.location.origin}/`;
+  }
+}
+
+function resolveWebsiteRoute(routePath) {
+  try {
+    return new URL(routePath, resolveWebsiteBaseUrl()).toString();
+  } catch {
+    return `${window.location.origin}/${String(routePath || '').replace(/^\/+/, '')}`;
+  }
+}
+
+function setSupabaseRedirectUrls() {
+  const emailUrl = resolveWebsiteRoute('./email-confirmation/');
+  const resetUrl = resolveWebsiteRoute('./reset-password/');
+  const changedUrl = resolveWebsiteRoute('./password-changed/');
+
+  if (els.supabaseEmailRedirectUrl) els.supabaseEmailRedirectUrl.textContent = emailUrl;
+  if (els.supabasePasswordResetUrl) els.supabasePasswordResetUrl.textContent = resetUrl;
+  if (els.supabasePasswordChangedUrl) els.supabasePasswordChangedUrl.textContent = changedUrl;
 }
 
 async function boot() {
   setSiteUrl();
+  setSupabaseRedirectUrls();
 
   if (els.downloadBtn) {
     els.downloadBtn.addEventListener('click', onDownloadClick);
